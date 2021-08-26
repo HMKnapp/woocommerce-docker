@@ -1,0 +1,31 @@
+== Ready to Use WooCommerce
+
+=== Launch
+
+`docker-compose --env-file .env up`
+
+=== Configure
+
+Edit `.env`
+
+.Minimum Configuration
+. `NGROK_TOKEN`
++
+ Optional. To start ngrok inside docker and create a temporary URL
++
+. `WORDPRESS_HOST`
++
+ Optional. E.g. with permanent ngrok outside docker: `ngrok http https://localhost:8443`
++
+. `PLUGIN_URL`
++
+ Optional. URL to git repository or `.zip` file
++
+. `PLUGIN_VERSION`
++
+ Optional. Default: `master`. Can be branch, tag, commit. Ignored if `PLUGIN_URL` points to `.zip` file
+
+//-
+
+NOTE: Plugin name is derived from name of first directory in repo or `.zip`.
+
