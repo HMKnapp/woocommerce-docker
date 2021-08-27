@@ -7,6 +7,8 @@ services:
       MYSQL_DATABASE: ${WORDPRESS_DB_NAME:-wordpress}
       MYSQL_USER: ${WORDPRESS_DB_USER:-wordpress}
       MYSQL_PASSWORD: ${WORDPRESS_DB_PASS:-wordpress}
+#    volumes:
+#      - ./data/wc_db:/var/lib/mysql
   woocommerce:
     container_name: woocommerce
     build:
@@ -17,6 +19,8 @@ services:
     ports:
       - ${PORT_HTTP:-8000}:80
       - ${PORT_SSL:-8443}:443
+#    volumes:
+#      - ./data/woocommerce:/var/www/html
     environment:
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST:-wc_db}
       WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME:-wordpress}

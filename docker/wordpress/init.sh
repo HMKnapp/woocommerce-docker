@@ -57,6 +57,17 @@ function install_plugin() {
   wp plugin install ${PATH_TO_ZIP} --activate  
 }
 
+function setup_store() {
+  wp option set woocommerce_onboarding_opt_in "yes"
+  wp option set woocommerce_onboarding_profile ""
+  wp option set woocommerce_store_address "Store Street 11"
+  wp option set woocommerce_store_address_2 ""
+  wp option set woocommerce_store_city "Graz"
+  wp option set woocommerce_store_postcode "8020"
+  wp option set woocommerce_default_country "AT"
+  wp wc --user=admin tool run install_pages
+}
+
 function print_info() {
   echo
   echo '####################################'
@@ -77,6 +88,7 @@ else
   create_db
   install_core
   install_woocommerce
+  setup_store
   if [[ -n ${PLUGIN_URL} ]]; then
     install_plugin
   fi
